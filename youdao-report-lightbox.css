@@ -1,0 +1,94 @@
+/* CASE 01 only. Transforms preserve the approved column geometry and height.
+   The original image already fills 92% of the panel: 1.025 reaches about 94%.
+   A 15–25% increase would overflow/crop it, so the full-size view handles detail. */
+#need-discovery:hover { transform: none; }
+#need-discovery .report-image-trigger {
+  display: block;
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  transform: translateY(-3px) scale(1.025);
+  transform-origin: center;
+  transition: transform 320ms cubic-bezier(.22, 1, .36, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+#need-discovery .report-image-trigger .evidence-image {
+  transition: filter 320ms ease;
+}
+#need-discovery .report-image-trigger:focus-visible {
+  outline: 2px solid var(--story-green);
+  outline-offset: 4px;
+}
+@media (hover: hover) and (pointer: fine) {
+  #need-discovery .report-image-trigger:hover {
+    transform: translateY(-6px) scale(1.056);
+  }
+  #need-discovery .report-image-trigger:hover .evidence-image {
+    filter: drop-shadow(0 9px 12px rgb(24 38 36 / 13%));
+  }
+}
+
+#report-lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+#report-lightbox[open] { display: grid; place-items: center; }
+#report-lightbox::backdrop {
+  background: rgb(8 17 16 / 87%);
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+#report-lightbox.is-visible,
+#report-lightbox.is-visible::backdrop { opacity: 1; }
+#report-lightbox .report-lightbox-image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 92vw;
+  max-height: 90vh;
+  max-height: 90dvh;
+  object-fit: contain;
+  transform: scale(.96);
+  transition: transform 250ms ease;
+}
+#report-lightbox.is-visible .report-lightbox-image { transform: scale(1); }
+#report-lightbox .report-lightbox-close {
+  position: absolute;
+  z-index: 1;
+  top: max(10px, env(safe-area-inset-top));
+  right: max(10px, env(safe-area-inset-right));
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: rgb(8 17 16 / 65%);
+  color: #f8f6f0;
+  font: 300 32px/1 Arial, sans-serif;
+  cursor: pointer;
+}
+#report-lightbox .report-lightbox-close:focus-visible { outline: 2px solid #d5ae67; outline-offset: -2px; }
+@media (prefers-reduced-motion: reduce) {
+  #need-discovery .report-image-trigger,
+  #need-discovery .report-image-trigger .evidence-image,
+  #report-lightbox,
+  #report-lightbox::backdrop,
+  #report-lightbox .report-lightbox-image { transition: none; }
+}

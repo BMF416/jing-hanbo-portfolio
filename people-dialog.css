@@ -1,0 +1,140 @@
+/* The second tool entry keeps the same rhythm as the surrounding links. */
+.tools .tool-list .people-trigger {
+  display: grid;
+  grid-template-columns: 45px 1fr 25px;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  padding: 21px 0;
+  border: 0;
+  border-bottom: 1px solid #567274;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+}
+.tools .tool-list .people-trigger span { font-size: 10px; color: var(--gold); }
+.tools .tool-list .people-trigger b { font-size: 16px; }
+.tools .tool-list .people-trigger i { font-size: 21px; font-style: normal; color: var(--lime); }
+.tools .tool-list .people-trigger:hover b { color: var(--lime); }
+.tools .tool-list .people-trigger:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 4px;
+}
+
+dialog.people-dialog {
+  width: min(1280px, calc(100vw - 32px));
+  max-width: none;
+  max-height: min(88vh, 760px);
+  padding: 0;
+  overflow-y: auto;
+  border: 1px solid #597774;
+  border-radius: 14px;
+  background: var(--teal);
+  color: var(--paper);
+  box-shadow: 0 25px 75px #071b1c66;
+}
+.people-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px 34px 12px;
+}
+.people-dialog-header h2 {
+  font-size: clamp(26px, 2.7vw, 36px);
+  font-weight: 800;
+  line-height: 1.2;
+}
+.people-dialog-close {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #93aaa3;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--paper);
+  font-size: 27px;
+  line-height: 1;
+}
+.people-dialog-close:hover,
+.people-dialog-close:focus-visible { background: #315858; outline: 2px solid var(--lime); outline-offset: 3px; }
+.people-cards {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+  padding: 8px 34px 34px;
+}
+.people-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 252px;
+  padding: 25px 18px 22px;
+  border: 1px solid #d5dfd4;
+  border-radius: 9px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 5px 13px #061d1c24;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  scroll-snap-align: start;
+}
+.people-card:hover,
+.people-card:focus-visible {
+  z-index: 1;
+  transform: translateY(-5px) scale(1.018);
+  border-color: var(--lime);
+  box-shadow: 0 14px 28px #061d1c66;
+}
+.people-card:focus-visible { outline: 3px solid var(--lime); outline-offset: 2px; }
+.people-card-name {
+  padding-right: 13px;
+  font-size: clamp(17px, 1.3vw, 18px);
+  font-weight: 800;
+  line-height: 1.35;
+}
+.people-card-handle {
+  margin-top: 7px;
+  color: #54746d;
+  font-size: 13px;
+  font-weight: 700;
+}
+.people-card-description {
+  margin-top: 22px;
+  color: #405451;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.people-card-arrow {
+  position: absolute;
+  top: 21px;
+  right: 15px;
+  color: #4f7972;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 1;
+}
+@media (max-width: 760px) {
+  dialog.people-dialog { width: calc(100vw - 24px); max-height: min(82vh, 680px); }
+  .people-dialog-header { padding: 22px 20px 12px; }
+  .people-cards {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(260px, 78vw);
+    gap: 14px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
+    padding: 8px 20px 26px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .people-card { min-height: 245px; }
+  .people-card-name { font-size: 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .people-card { transition: none; }
+}

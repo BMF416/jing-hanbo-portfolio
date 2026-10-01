@@ -1,0 +1,53 @@
+/* CASE 02 cover only; the card's link and lower information panel remain unchanged. */
+.global-case .case-cover {
+  isolation: isolate;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 38px 7%;
+  color: #fff;
+  background-color: #102a4b;
+  background-image:
+    linear-gradient(90deg, rgba(7, 20, 39, .82) 0%, rgba(7, 20, 39, .66) 36%, rgba(7, 20, 39, .28) 72%, rgba(7, 20, 39, .12) 100%),
+    linear-gradient(0deg, rgba(7, 20, 39, .26), transparent 46%),
+    url("assets/f1h2o/5.jpg");
+  background-size: cover;
+  background-position: center, center, center top;
+}
+.global-case .global-cover-copy {
+  position: absolute;
+  top: 47%;
+  left: 7%;
+  right: 7%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  max-width: none;
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(3, 14, 27, .72);
+}
+.global-case .global-cover-copy strong {
+  position: static;
+  color: #fff;
+  font: 900 clamp(18px, 1.9vw, 26px)/1.2 var(--sans);
+  letter-spacing: -.045em;
+  white-space: normal;
+  word-break: keep-all;
+  text-wrap: balance;
+}
+.global-case .global-cover-copy span {
+  color: #fff;
+  font-size: clamp(14px, 1.2vw, 17px);
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: normal;
+  text-wrap: balance;
+}
+@media (max-width: 660px) {
+  .global-case .case-cover { padding: 35px 7%; }
+  .global-case .global-cover-copy { gap: 16px; }
+  .global-case .global-cover-copy strong { font-size: clamp(18px, 5.3vw, 23px); }
+  .global-case .global-cover-copy span { font-size: clamp(13px, 3.7vw, 15px); }
+}

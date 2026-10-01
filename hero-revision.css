@@ -1,0 +1,115 @@
+/* Sales-oriented hero revision */
+.hero-title {
+  margin-top: 24px;
+  min-height: 132px;
+  isolation: isolate;
+}
+
+/* Preserve the reference's two horizontal English lines, even in a translated page. */
+.hero-copy > .eyebrow > span {
+  white-space: nowrap;
+  writing-mode: horizontal-tb;
+}
+
+.hero-title .handwriting {
+  top: 47%;
+  left: 56%;
+  z-index: 3;
+  color: var(--lime);
+  font-family: "Brush Script MT", "Segoe Script", cursive;
+  font-size: clamp(80px, 7.5vw, 104px);
+  font-weight: 700;
+  letter-spacing: -8px;
+  line-height: .8;
+  white-space: nowrap;
+  pointer-events: none;
+  -webkit-text-stroke: .35px #25402b;
+  text-shadow: 2px 3px 0 #17242588, 0 0 1px #172425;
+  transform: rotate(-9deg);
+}
+
+.hero h1 {
+  position: relative;
+  z-index: 2;
+  color: #101918;
+  font-size: clamp(76px, 8.55vw, 122px);
+  letter-spacing: -4.8px;
+  line-height: .83;
+  white-space: nowrap;
+}
+
+.hero h2 { margin-top: 26px; }
+.hero-summary { max-width: 505px; }
+.hero-art { background: #eeece6; }
+.hero-portrait { inset: 42px 17% 38px 19%; box-shadow: 8px 8px 0 var(--ink); }
+.name-stamp { top: 19px; left: 21px; }
+
+/* File tabs share a visual system but deliberately vary in proportion and placement. */
+.folder {
+  height: auto;
+  z-index: 3;
+}
+
+.folder i {
+  height: var(--folder-height);
+  border-radius: 2px;
+  box-shadow: 4px 5px 0 #172425;
+  font-size: 18px;
+}
+
+.folder i::before {
+  left: 8px;
+  width: 38%;
+  height: 13px;
+  border-radius: 3px 3px 0 0;
+}
+
+.folder span {
+  margin-top: 6px;
+  font-size: 7px;
+  letter-spacing: .15px;
+}
+
+.folder-pink {
+  --folder-height: 58px;
+  top: 13%; left: 3%; width: 94px;
+  transform: rotate(-7deg);
+}
+
+.folder-orange {
+  --folder-height: 70px;
+  top: 17%; right: 2%; width: 117px;
+  transform: rotate(5deg);
+}
+
+.folder-blue {
+  --folder-height: 54px;
+  bottom: 15%; left: 2%; width: 84px;
+  transform: rotate(6deg);
+}
+
+.folder-green {
+  --folder-height: 65px;
+  right: 5%; bottom: 4%; width: 105px;
+  transform: rotate(-8deg);
+}
+
+.folder:hover { transform: translateY(-5px) rotate(-2deg); }
+
+@media (max-width: 900px) {
+  .hero-title { min-height: 112px; }
+  .hero h1 { font-size: clamp(64px, 8.7vw, 94px); letter-spacing: -4px; }
+  .hero-title .handwriting { font-size: clamp(66px, 9vw, 84px); }
+  .folder-orange { width: 103px; }
+  .folder-green { width: 94px; }
+}
+
+@media (max-width: 660px) {
+  .hero-title { min-height: 29vw; }
+  .hero h1 { font-size: 19.5vw; letter-spacing: -.7vw; }
+  .hero-title .handwriting { top: 43%; left: 55%; font-size: clamp(52px, 16vw, 78px); letter-spacing: -5px; }
+  .folder-pink { width: 76px; }
+  .folder-orange { width: 92px; }
+  .folder-blue { width: 70px; }
+  .folder-green { width: 84px; }
+}

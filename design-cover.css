@@ -1,0 +1,81 @@
+/* Only the third Results card is restyled; its size and link hover are inherited. */
+.design-case .design-cover {
+  isolation: isolate;
+  background: #f8f6f0;
+  color: #173d3d;
+}
+.design-case .design-cover-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 54%;
+}
+.design-case .design-cover > .design-cover-shade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(248, 246, 240, .84) 0%, rgba(248, 246, 240, .72) 35%, rgba(248, 246, 240, .28) 66%, rgba(248, 246, 240, .04) 100%);
+  pointer-events: none;
+}
+.design-case .design-cover > .design-cover-label {
+  top: 20px;
+  left: 27px;
+  z-index: 2;
+  color: #173d3d;
+  font: 800 10px/1.5 var(--sans);
+  letter-spacing: 1.4px;
+}
+.design-case .design-cover > .design-cover-copy {
+  position: absolute;
+  z-index: 2;
+  top: auto;
+  right: 24px;
+  bottom: 48px;
+  left: 27px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
+  width: auto;
+}
+.design-case .design-cover-copy strong {
+  position: static;
+  display: block;
+  color: #173d3d;
+  font: 900 clamp(30px, 2.8vw, 39px)/1.2 var(--sans);
+  letter-spacing: -.04em;
+}
+.design-case .design-cover-copy > span {
+  color: #173d3d;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.design-case .design-cover > small {
+  bottom: 16px;
+  left: 27px;
+  z-index: 2;
+  color: #395b55;
+  font-size: 8px;
+  letter-spacing: 1.2px;
+}
+@media (max-width: 660px) {
+  .design-case .design-cover > .design-cover-label,
+  .design-case .design-cover > .design-cover-copy,
+  .design-case .design-cover > small {
+    left: 23px;
+  }
+  .design-case .design-cover > .design-cover-copy {
+    right: 20px;
+    bottom: 44px;
+  }
+  .design-case .design-cover-copy strong {
+    font-size: clamp(27px, 7.5vw, 34px);
+  }
+  .design-case .design-cover-copy > span {
+    font-size: 13px;
+  }
+}

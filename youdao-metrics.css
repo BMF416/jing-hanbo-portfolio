@@ -1,0 +1,66 @@
+/* Result overview: four KPIs and one shared-scale process chart. */
+#result .performance-chart { margin:52px auto 0; max-width:1100px; padding:28px 32px 20px; background:#fcfbf7; border:1px solid var(--line); border-top:3px solid var(--deep); }
+#result .performance-chart figcaption { display:flex; justify-content:space-between; align-items:baseline; gap:16px; color:var(--deep); font-size:14px; font-weight:700; }
+#result figcaption small { margin-left:12px; font-size:9px; letter-spacing:1px; font-weight:500; }
+#result .performance-period { font-size:11px; letter-spacing:1px; color:var(--muted); white-space:nowrap; font-weight:400; }
+#result .result-kpis { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); margin:28px 0 30px; padding:0 0 28px; border-bottom:1px solid var(--line); }
+#result .result-kpis > div { min-width:0; padding:0 20px; border-left:1px solid var(--line); }
+#result .result-kpis > div:first-child { padding-left:0; border-left:0; }
+#result .result-kpis > div:last-child { padding-right:0; }
+#result .result-kpis dt { color:#5e6862; font-size:12px; line-height:1.7; min-height:21px; }
+#result .result-kpis dd { margin:16px 0 0; color:var(--deep); font:clamp(30px,3.45vw,48px)/1.1 var(--display); letter-spacing:-.8px; white-space:nowrap; }
+#result .result-kpis dd small { font:12px var(--sans); letter-spacing:0; }
+#result .trend-heading { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
+#result .trend-heading h3 { font-size:16px; color:var(--deep); }
+#result .trend-heading p { font-size:11px; line-height:1.7; color:var(--muted); }
+#result .trend-legend { display:flex; flex-wrap:wrap; gap:12px 26px; list-style:none; margin:20px 0 4px; padding:0; }
+#result .trend-legend li { display:flex; align-items:center; gap:8px; color:#535e58; font-size:12px; line-height:1.7; }
+#result .trend-legend i { width:24px; border-top:2px solid var(--series-color); }
+#result .trend-wechat { --series-color:#4c7f89; }
+#result .trend-attendance { --series-color:#a78242; }
+#result .trend-assessment { --series-color:#858b80; }
+#result .trend-value { --series-color:#194744; }
+#result .trend-wechat i, #result .trend-assessment i { border-top-style:dashed; }
+#result .trend-attendance i { border-top-style:dotted; }
+#result .trend-viewport { overflow-x:auto; scrollbar-width:thin; scrollbar-color:#a5b4aa #f0eee7; }
+#result .trend-viewport:focus-visible { outline:2px solid #baa06b; outline-offset:4px; }
+#result .process-trend { display:block; width:100%; min-width:560px; height:auto; }
+#result .trend-grid line { stroke:#dddfd7; stroke-width:1; }
+#result .trend-grid text { fill:#747c75; font:12px var(--sans); }
+#result .trend-grid .trend-month { fill:#4e5d55; font-size:14px; }
+#result .trend-series polyline { fill:none; stroke:var(--series-color); stroke-width:2; stroke-linejoin:round; }
+#result .trend-series circle { fill:#fcfbf7; stroke:var(--series-color); stroke-width:2; }
+#result .trend-series text { fill:var(--series-color); font:600 14px var(--sans); }
+#result .trend-value polyline { stroke-width:3; }
+#result .trend-value circle { fill:var(--series-color); }
+#result .trend-wechat polyline { stroke-dasharray:8 4; }
+#result .trend-attendance polyline { stroke-dasharray:2 4; }
+#result .trend-assessment polyline { stroke-dasharray:5 5; }
+#result .result-source { margin-top:16px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; line-height:1.8; }
+#result .trend-scroll-hint { display:none; }
+@media (max-width:1100px) {
+  #result .result-kpis > div { padding:0 12px; }
+  #result .result-kpis dt { min-height:41px; }
+  #result .result-kpis dd { font-size:34px; }
+}
+@media (max-width:760px) {
+  #result .performance-chart { padding:22px 20px 18px; margin-top:36px; }
+  #result .performance-chart figcaption { align-items:flex-start; }
+  #result figcaption small { display:block; margin:6px 0 0; font-size:8px; }
+  #result .performance-period { font-size:9px; }
+  #result .result-kpis { grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px 0; }
+  #result .result-kpis > div { padding:0 14px; }
+  #result .result-kpis > div:nth-child(odd) { border-left:0; padding-left:0; }
+  #result .result-kpis dt { min-height:41px; font-size:11px; }
+  #result .result-kpis dd { margin-top:8px; font-size:clamp(28px,5.9vw,40px); }
+  #result .trend-heading { display:block; }
+  #result .trend-heading p { margin-top:8px; }
+  #result .trend-legend { gap:10px 18px; }
+  #result .trend-scroll-hint { display:block; margin:16px 0 0; font-size:10px; color:#747c75; }
+  #result .trend-series text, #result .trend-grid .trend-month { font-size:18px; }
+  #result .trend-grid text { font-size:16px; }
+}
+@media (max-width:360px) {
+  #result .performance-chart { padding-left:14px; padding-right:14px; }
+  #result .result-kpis dd { font-size:26px; }
+}

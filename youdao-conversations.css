@@ -1,0 +1,488 @@
+/* Shared visual language for Youdao sections 02–05.
+   Kept in the existing case stylesheet; homepage and Result styles are independent. */
+.case-narrative {
+  --story-paper: #fdfcf8;
+  --story-green: #194744;
+  --story-ink: #182624;
+  --story-sand: #f4e7c7;
+  --story-muted: #686e69;
+  --story-line: #dedfd6;
+  --story-accent: #d5ae67;
+}
+.case-narrative.section-pad {
+  padding: 80px 5.2% 88px;
+  background: var(--story-paper);
+  color: var(--story-ink);
+}
+.case-narrative + .case-narrative { border-top: 1px solid var(--story-line); }
+
+/* The same label, heading, accent rule and summary in each section. */
+.case-narrative .section-intro { display: block; max-width: none; }
+.case-narrative .section-kicker {
+  margin: 0 0 18px;
+  color: var(--story-muted);
+  font: 500 14px/1.5 var(--sans);
+  letter-spacing: 2px;
+}
+.case-narrative .section-intro h2 {
+  margin: 0;
+  color: var(--story-ink);
+  font: 800 clamp(32px, 3.7vw, 52px)/1.24 var(--sans);
+  letter-spacing: -.8px;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+.case-narrative .section-intro h2::after {
+  content: "";
+  display: block;
+  width: 76px;
+  height: 4px;
+  margin-top: 24px;
+  background: var(--story-accent);
+}
+.case-narrative .section-intro > p:last-child {
+  max-width: none;
+  margin: 24px 0 0;
+  color: #545e58;
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+/* 02 / PROCESS: reference layout, with a clear reading order at each width. */
+.journey-scroll {
+  margin-top: 38px;
+  padding: 5px 2px 12px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #a5b4aa #f0eee7;
+}
+.journey-scroll:focus-visible {
+  outline: 2px solid var(--story-green);
+  outline-offset: 5px;
+}
+.case-narrative .journey {
+  --step-gap: 28px;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: var(--step-gap);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+}
+.case-narrative .journey li {
+  position: relative;
+  min-width: 0;
+  min-height: 164px;
+  padding: 19px 15px;
+  border: 1px solid var(--story-green);
+  border-radius: 2px;
+  background: var(--story-green);
+  color: #f9faf5;
+  box-shadow: none;
+  transform: none;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.case-narrative .journey li > span {
+  color: inherit;
+  font: 500 14px/1.4 var(--sans);
+  font-variant-numeric: tabular-nums;
+}
+.case-narrative .journey h3 {
+  margin: 14px 0 10px;
+  color: inherit;
+  font: 700 clamp(18px, 1.65vw, 23px)/1.35 var(--sans);
+  letter-spacing: 0;
+}
+.case-narrative .journey p {
+  margin: 0;
+  color: inherit;
+  font-size: 13px;
+  line-height: 1.75;
+  letter-spacing: 0;
+}
+.case-narrative .journey p span { display: inline-block; white-space: nowrap; }
+.case-narrative .journey .journey-highlight {
+  border-color: var(--story-sand);
+  background: var(--story-sand);
+  color: var(--story-ink);
+}
+.case-narrative .journey li > i {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: calc(50% - 14px);
+  left: calc(100% + 1px);
+  right: auto;
+  width: var(--step-gap);
+  height: 28px;
+  background: none;
+  color: var(--story-green);
+  font: 400 26px/1 var(--sans);
+}
+.process-insight {
+  position: relative;
+  margin-top: 36px;
+  padding: 28px 32px 29px 52px;
+  border: 1px solid #efeee8;
+  border-radius: 3px;
+  background: #f5f4f0;
+}
+.process-insight::before {
+  content: "";
+  position: absolute;
+  inset: 24px auto 24px 18px;
+  width: 4px;
+  border-radius: 1px;
+  background: var(--story-accent);
+}
+.process-insight .insight-label {
+  color: #896933;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+.process-insight h3 {
+  margin: 20px 0 14px;
+  font-size: clamp(20px, 2vw, 27px);
+  font-weight: 700;
+  line-height: 1.65;
+}
+.process-insight > p:last-child {
+  color: var(--story-muted);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+/* 03 / REAL CONVERSATIONS: actual evidence next to concise explanations. */
+.conversation-grid { display: grid; grid-auto-rows: auto; gap: 28px; margin: 42px 0 0; }
+.conversation-card,
+.conversation-card.reverse {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  align-items: stretch;
+  min-height: 380px;
+  border: 1px solid var(--story-line);
+  border-radius: 2px;
+  background: #fffefa;
+  box-shadow: none;
+  transform: none;
+  transition: border-color .18s ease, transform .18s ease;
+}
+.conversation-card.reverse { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); }
+.conversation-card:hover { transform: none; box-shadow: none; }
+.evidence-slot {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 28px;
+  border-right: 1px solid var(--story-line);
+  background: #edf0ea;
+  color: var(--story-green);
+}
+.conversation-card.reverse .evidence-slot {
+  order: 2;
+  border-right: 0;
+  border-left: 1px solid var(--story-line);
+  background: #f6edd8;
+}
+.evidence-frame {
+  position: relative;
+  min-width: 0;
+  min-height: 260px;
+  border: 1px solid #cbd4ca;
+}
+.conversation-card.reverse .evidence-frame { border-color: #dcd2bb; }
+.evidence-slot figcaption {
+  padding-top: 13px;
+  color: #56675c;
+  font-size: 12px;
+  line-height: 1.6;
+}
+/* Add src and remove hidden. The frame keeps all cards equal in size;
+   contain shows the full evidence, regardless of the uploaded image's ratio. */
+.evidence-image:not([hidden]) {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.evidence-image[hidden] { display: none; }
+.conversation-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 30px 36px;
+}
+.conversation-copy > h3 {
+  margin: 0 0 24px;
+  color: var(--story-green);
+  font: 700 15px/1.5 var(--sans);
+  letter-spacing: 1px;
+}
+.conversation-copy dl { margin: 0; }
+.conversation-copy dl > div {
+  padding: 16px 0;
+  border-top: 1px solid var(--story-line);
+}
+.conversation-copy dl > div:last-child { padding-bottom: 0; }
+.conversation-copy dt { color: var(--story-ink); font-size: 15px; font-weight: 700; }
+.conversation-copy dd {
+  margin: 9px 0 0;
+  color: var(--story-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* CASE 01: untouched transparent collage, large evidence / quiet explanation.
+   Scoped to this case so CASE 02 and CASE 03 retain their existing styling. */
+#need-discovery .evidence-slot {
+  padding: 24px 4% 22px;
+}
+#need-discovery .evidence-frame {
+  display: flex;
+  align-items: center;
+  min-height: 0;
+  border: 0;
+}
+#need-discovery .evidence-image {
+  position: static;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 9px rgb(24 38 36 / 8%));
+}
+#need-discovery figcaption {
+  padding-top: 18px;
+  font-weight: 600;
+  letter-spacing: .4px;
+}
+#need-discovery .conversation-copy > h3 {
+  font-size: 17px;
+  margin-bottom: 22px;
+}
+#need-discovery .conversation-copy dl > div { padding-top: 18px; padding-bottom: 18px; }
+#need-discovery .conversation-copy dl > div:last-child { padding-bottom: 0; }
+#need-discovery .conversation-copy dd p {
+  margin: 0;
+  color: inherit;
+  font-size: 14px;
+  line-height: 1.85;
+  letter-spacing: 0;
+}
+#need-discovery .conversation-copy dd p + p { margin-top: 8px; }
+#need-discovery .conversation-copy strong { color: var(--story-green); font-weight: 600; }
+@media (max-width: 700px) {
+  #need-discovery .evidence-slot { padding: 20px 4% 18px; }
+  #need-discovery .conversation-copy > h3 { font-size: 15px; }
+}
+
+/* CASE 02 is a standalone editorial story between two compact cases. */
+.featured-case {
+  min-width: 0;
+  border: 1px solid var(--story-line);
+  border-top: 3px solid var(--story-green);
+  border-radius: 2px;
+  background: #fffefa;
+}
+.featured-case-header { padding: 36px 40px 34px; background: #f6edd8; }
+.featured-case-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--story-green);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+.featured-case-meta > span { font-size: 10px; font-weight: 500; letter-spacing: 1.5px; }
+.featured-case-header h3 {
+  margin: 18px 0 0;
+  color: var(--story-green);
+  font: 700 clamp(28px, 3vw, 40px)/1.2 var(--sans);
+  letter-spacing: -.8px;
+  text-wrap: balance;
+}
+.featured-case-intro { margin-top: 20px; color: #545e58; font-size: 15px; line-height: 1.85; }
+.featured-story { padding: 0 40px; }
+.story-row {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: center;
+  padding: 44px 0;
+}
+.story-row + .story-row { border-top: 1px solid var(--story-line); }
+.story-evidence { width: 100%; max-width: 360px; min-width: 0; margin: 0; justify-self: center; }
+.story-image-frame {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border: 1px solid #cbd4ca;
+  background: #edf0ea;
+}
+/* The empty slot has a portrait ratio. Real screenshots take their full natural
+   height at this width, so tall chats are readable and never cropped to fit. */
+.story-image-frame:has(.story-image:not([hidden])) { aspect-ratio: auto; }
+.story-image[hidden] { display: none; }
+.story-image:not([hidden]) { display: block; width: 100%; height: auto; object-fit: contain; }
+.story-evidence figcaption { margin-top: 12px; color: #56675c; font-size: 12px; line-height: 1.6; }
+.story-opening .story-evidence { max-width: 252px; }
+.story-core .story-evidence { max-width: 440px; }
+.story-core .story-image-frame { border-color: #94a69a; }
+.story-copy { min-width: 0; }
+.story-step { margin: 0; color: var(--story-green); font-size: 12px; font-weight: 700; line-height: 1.6; letter-spacing: 1.25px; }
+.story-copy h4 { margin: 12px 0 18px; color: var(--story-ink); font: 700 clamp(22px, 2vw, 28px)/1.3 var(--sans); letter-spacing: -.3px; }
+.story-text { color: var(--story-ink); font-size: 16px; line-height: 1.85; }
+.story-dual > div + div { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--story-line); }
+.story-practice { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
+.story-result { padding: 28px; border: 1px solid #e8daba; background: #f6edd8; }
+.featured-takeaway { margin: 0 40px 40px; padding: 28px 32px; border-left: 3px solid var(--story-green); background: var(--story-sand); }
+.featured-takeaway h4 { margin: 0; color: var(--story-green); font: 700 12px/1.5 var(--sans); letter-spacing: 1.5px; }
+.featured-takeaway .takeaway-statement { max-width: 960px; margin: 16px 0 14px; color: var(--story-green); font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; line-height: 1.4; text-wrap: balance; }
+.featured-takeaway > p:last-child { color: #545e58; font-size: 14px; line-height: 1.85; }
+
+/* 04–05 continue the same methods → evidence → learning → application hierarchy. */
+.case-narrative .thinking-grid { gap: 22px; margin-top: 42px; }
+.case-narrative .thinking-card {
+  min-height: 270px;
+  padding: 26px;
+  border: 1px solid var(--story-line);
+  border-top: 3px solid var(--story-green);
+  border-radius: 2px;
+  background: #fffefa;
+  box-shadow: none;
+  transform: none;
+  transition: border-color .18s ease, transform .18s ease;
+}
+.case-narrative .thinking-card:nth-child(2) { background: #f8f0df; }
+.case-narrative .thinking-card > span { color: #68796e; font: 500 14px var(--sans); }
+.case-narrative .thinking-card h3 {
+  margin-top: 26px;
+  font: 700 clamp(20px, 2vw, 27px)/1.35 var(--sans);
+  letter-spacing: -.4px;
+}
+.case-narrative .thinking-card b { margin-top: 18px; font-size: 14px; }
+.case-narrative .thinking-card p { margin-top: 14px; color: var(--story-muted); font-size: 13px; letter-spacing: 0; }
+.case-narrative .transfer-map { margin-top: 42px; border-color: var(--story-green); }
+.case-narrative .transfer-map > div {
+  grid-template-columns: minmax(0, 1fr) 60px minmax(0, 1fr);
+  gap: 12px;
+  padding: 21px 24px;
+  border-color: var(--story-line);
+}
+.case-narrative .transfer-map > div:hover { background: transparent; }
+.case-narrative .transfer-map b,
+.case-narrative .transfer-map span { font-size: 16px; line-height: 1.6; }
+.case-narrative .transfer-map span { color: var(--story-green); }
+.case-narrative .transfer-map i { color: var(--story-green); }
+.case-narrative blockquote {
+  max-width: none;
+  margin: 38px 0 0;
+  padding: 24px 28px;
+  border-left: 4px solid var(--story-accent);
+  background: #f5f4f0;
+  color: var(--story-green);
+  font: 600 23px/1.65 var(--sans);
+  letter-spacing: -.3px;
+  transform: none;
+}
+
+/* Only subtle hover; no entrance, growth, rotation or staggered effects in 02–05. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .case-narrative .journey li:hover { transform: translateY(-2px); box-shadow: 0 3px 8px #193c3210; }
+  .conversation-card:hover,
+  .case-narrative .thinking-card:hover { transform: translateY(-2px); border-color: #9baea1; box-shadow: none; }
+  .case-narrative .transfer-map > div:hover { background: #f6edd8; }
+}
+@media (max-width: 1100px) and (min-width: 701px) {
+  .case-narrative .journey { grid-template-columns: repeat(7, 155px); }
+  .journey-scroll { padding-bottom: 18px; }
+}
+@media (max-width: 900px) {
+  .case-narrative.section-pad { padding: 64px 6%; }
+  .case-narrative .section-intro h2 { font-size: 36px; }
+  .case-narrative .section-intro > p:last-child { font-size: 16px; }
+  .conversation-copy { padding: 26px; }
+  .evidence-slot { padding: 22px; }
+  .featured-case-header { padding: 28px; }
+  .featured-story { padding: 0 28px; }
+  .story-row { gap: 28px; }
+  .story-text { font-size: 15px; }
+  .featured-takeaway { margin: 0 28px 28px; padding: 26px; }
+}
+@media (max-width: 1000px) {
+  .story-row, .story-practice { grid-template-columns: minmax(0, 1fr); }
+  .story-copy { width: 100%; max-width: 680px; justify-self: center; }
+  .story-evidence { max-width: 360px; }
+  .story-core .story-evidence { max-width: 440px; }
+  .story-dual { display: grid; gap: 28px; }
+  .story-dual > div + div { margin-top: 0; padding-top: 28px; }
+}
+@media (max-width: 700px) {
+  .case-narrative.section-pad { padding: 52px 6% 56px; }
+  .case-narrative .section-kicker { font-size: 12px; letter-spacing: 1.5px; margin-bottom: 16px; }
+  .case-narrative .section-intro h2 { font-size: clamp(28px, 7.4vw, 36px); line-height: 1.35; letter-spacing: -.5px; }
+  .case-narrative .section-intro h2::after { width: 54px; height: 3px; margin-top: 20px; }
+  .case-narrative .section-intro > p:last-child { margin-top: 20px; font-size: 15px; }
+  .journey-scroll { margin-top: 28px; overflow: visible; }
+  .case-narrative .journey { --step-gap: 26px; grid-template-columns: minmax(0, 1fr); }
+  .case-narrative .journey li {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 9px 12px;
+    align-content: center;
+    min-height: 120px;
+    padding: 22px;
+  }
+  .case-narrative .journey li > span { grid-row: 1 / 3; padding-top: 3px; }
+  .case-narrative .journey h3 { margin: 0; font-size: 21px; }
+  .case-narrative .journey p { grid-column: 2; font-size: 14px; }
+  .case-narrative .journey li > i { top: 100%; left: calc(50% - 14px); width: 28px; height: var(--step-gap); transform: rotate(90deg); }
+  .process-insight { margin-top: 25px; padding: 24px 20px 24px 34px; }
+  .process-insight::before { left: 14px; width: 3px; }
+  .process-insight h3 { font-size: 20px; margin-top: 16px; }
+  .process-insight > p:last-child { font-size: 14px; }
+  .conversation-grid { gap: 24px; margin-top: 30px; }
+  .conversation-card,
+  .conversation-card.reverse { grid-template-columns: minmax(0, 1fr); }
+  .evidence-slot,
+  .conversation-card.reverse .evidence-slot { order: 0; border: 0; border-bottom: 1px solid var(--story-line); padding: 22px; }
+  .evidence-frame { min-height: 235px; }
+  .conversation-copy { padding: 26px 22px; }
+  .conversation-copy > h3 { font-size: 13px; letter-spacing: .7px; }
+  .featured-case-header { padding: 26px 22px; }
+  .featured-case-meta { flex-wrap: wrap; gap: 8px; font-size: 12px; letter-spacing: .7px; }
+  .featured-case-meta > span { font-size: 9px; }
+  .featured-case-header h3 { font-size: 28px; }
+  .featured-case-intro { font-size: 14px; }
+  .featured-story { padding: 0 22px; }
+  .story-row { padding: 30px 0; gap: 24px; }
+  .story-opening .story-evidence { max-width: 216px; }
+  .story-copy h4 { font-size: 22px; }
+  .story-step { font-size: 11px; }
+  .story-text { font-size: 15px; }
+  .story-evidence figcaption { font-size: 11px; }
+  .story-result { padding: 22px; }
+  .featured-takeaway { margin: 0 22px 22px; padding: 22px; }
+  .featured-takeaway .takeaway-statement { font-size: 22px; }
+  .featured-takeaway > p:last-child { font-size: 13px; }
+  .case-narrative .thinking-grid { grid-template-columns: minmax(0, 1fr); margin-top: 30px; }
+  .case-narrative .thinking-card { min-height: 240px; }
+  .case-narrative .transfer-map { margin-top: 30px; }
+  .case-narrative .transfer-map > div { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 20px 8px; }
+  .case-narrative .transfer-map b,
+  .case-narrative .transfer-map span { font-size: 14px; }
+  .case-narrative .transfer-map i { width: 22px; font-size: 20px; transform: rotate(90deg); }
+  .case-narrative blockquote { margin-top: 30px; padding: 18px 20px; font-size: 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .case-narrative *, .case-narrative *::before, .case-narrative *::after { transition: none !important; animation: none !important; }
+}

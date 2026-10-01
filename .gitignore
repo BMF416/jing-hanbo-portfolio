@@ -1,0 +1,11 @@
+.vercel/
+index.original.html
+case.html
+case.css
+case.js
+README.md
+OVERSEAS-PROJECT.md
+assets/**/*.md
+assets/hero/portrait-original.jpg
+assets/case2/case2-0[1-5].*
+assets/case3/case3-0[1-5].jpg

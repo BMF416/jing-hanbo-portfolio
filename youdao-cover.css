@@ -1,0 +1,101 @@
+/* CASE 01 cover only. The card, its lower information area and link stay intact. */
+.sales-case .case-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  isolation: isolate;
+  padding: 22px 7% 39px;
+  color: #fff;
+  background-color: #173d3d;
+  background-image:
+    linear-gradient(90deg, rgba(8, 30, 31, .88) 0%, rgba(8, 30, 31, .66) 47%, rgba(8, 30, 31, .30) 100%),
+    radial-gradient(circle at 62% 42%, transparent 36%, rgba(4, 19, 21, .13) 100%),
+    url("assets/images/youdao-office.jpg");
+  background-size: cover;
+  background-position: center, center, center 42%;
+}
+.sales-case .case-cover > .sales-cover-label {
+  top: 21px;
+  left: 7%;
+  z-index: 1;
+  color: #fff;
+  font: 700 11px/1.45 var(--sans);
+  letter-spacing: 1.4px;
+  text-shadow: 0 1px 3px #071c1db8;
+}
+.sales-case .sales-cover-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 15px;
+  max-width: 100%;
+  text-shadow: 0 2px 5px #071c1dbd;
+}
+.sales-case .case-cover .sales-cover-title {
+  position: static;
+  display: block;
+  color: #fff;
+  font: 900 clamp(35px, 3vw, 43px)/1.14 var(--sans);
+  letter-spacing: -.055em;
+  white-space: nowrap;
+}
+.sales-case .sales-cover-result {
+  display: block;
+  color: #fff;
+  font-size: clamp(16px, 1.45vw, 19px);
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: normal;
+}
+.sales-case .sales-cover-statement {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.sales-case .case-cover > .sales-cover-footer {
+  bottom: 15px;
+  left: 7%;
+  z-index: 1;
+  color: #fff;
+  font: 700 9px/1.5 var(--sans);
+  letter-spacing: 1.1px;
+  text-shadow: 0 1px 3px #071c1db8;
+}
+@media (max-width: 1100px) {
+  .sales-case .case-cover {
+    background-size: cover, cover, auto 140%;
+    background-position: center, center, 31% 42%;
+  }
+}
+@media (max-width: 660px) {
+  .sales-case .case-cover {
+    padding: 18px 7% 37px;
+  }
+  .sales-case .case-cover > .sales-cover-label {
+    top: 17px;
+    font-size: 10px;
+  }
+  .sales-case .sales-cover-copy {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .sales-case .case-cover .sales-cover-title {
+    font-size: clamp(27px, 7.6vw, 34px);
+  }
+  .sales-case .sales-cover-result {
+    font-size: 16px;
+    white-space: normal;
+  }
+  .sales-case .sales-cover-statement {
+    font-size: 13px;
+  }
+  .sales-case .case-cover > .sales-cover-footer {
+    bottom: 13px;
+    font-size: 8px;
+  }
+}

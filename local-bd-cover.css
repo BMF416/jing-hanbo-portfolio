@@ -1,0 +1,54 @@
+/* Use the existing grid and cover heights; stretch information panels per row. */
+.case-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.case-grid .case-card { display: flex; flex-direction: column; min-width: 0; }
+.case-grid .case-card[hidden] { display: none; }
+.case-grid .case-cover { flex-shrink: 0; }
+.case-grid .case-text { display: flex; flex: 1; flex-direction: column; min-width: 0; }
+.case-grid .case-text h3 { flex: 1; }
+.case-grid .case-card:focus-visible { outline: 3px solid var(--teal); outline-offset: 5px; }
+
+.local-bd-case .case-cover {
+  isolation: isolate;
+  padding: 22px 7% 39px;
+  background-color: var(--teal);
+  background-image: linear-gradient(90deg, #081e1fee 0%, #081e1fcd 47%, #081e1f99 100%), url("assets/local-bd/provider-partners.jpg");
+  background-size: cover;
+  background-position: center, center 64%;
+  color: #fff;
+  container-type: inline-size;
+}
+.local-bd-case .case-cover > .local-bd-label {
+  top: 21px; left: 7%;
+  font: 700 11px/1.45 var(--sans);
+  letter-spacing: 1.4px;
+}
+.local-bd-case .local-bd-copy {
+  position: absolute; top: 47%; left: 7%; right: 7%;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+  text-shadow: 0 2px 5px #071c1dbd;
+}
+.local-bd-case .local-bd-copy strong {
+  position: static;
+  font: 900 clamp(24px, 7.7cqw, 43px)/1.14 var(--sans);
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+.local-bd-case .local-bd-copy > span {
+  font-size: clamp(13px, 3.5cqw, 19px);
+  font-weight: 700; line-height: 1.5;
+}
+.local-bd-case .case-cover > .local-bd-credit {
+  bottom: 15px; left: 7%; right: 7%;
+  font: 700 9px/1.5 var(--sans);
+  letter-spacing: 1.1px;
+}
+html[lang="en"] .local-bd-case .local-bd-copy strong { font-size: clamp(23px, 6.6cqw, 37px); }
+html[lang="en"] .local-bd-case .local-bd-copy > span { font-size: clamp(12px, 3cqw, 16px); }
+@media (max-width: 660px) {
+  .case-grid { grid-template-columns: minmax(0, 1fr); }
+  .local-bd-case .case-cover { padding: 18px 7% 37px; }
+  .local-bd-case .case-cover > .local-bd-label { top: 17px; font-size: 10px; }
+  .local-bd-case .local-bd-copy { gap: 8px; }
+  .local-bd-case .case-cover > .local-bd-credit { bottom: 13px; font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .case-grid .case-card { transition: none; } }

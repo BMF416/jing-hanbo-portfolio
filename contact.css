@@ -1,0 +1,82 @@
+/* Contact only: match the preceding .section-pad container and its mobile gutter. */
+#contact {
+  display: grid;
+  grid-template-columns: minmax(0, 43fr) minmax(0, 57fr);
+  grid-template-areas: "label label" "title statements" "details statements";
+  grid-template-rows: auto auto 1fr;
+  column-gap: clamp(56px, 4vw, 64px);
+  row-gap: 24px;
+  align-items: start;
+  padding: clamp(48px, 5vw, 72px) 5.2%;
+  background: #F0A9C3;
+  color: #18211E;
+}
+#contact > .section-label { grid-area: label; margin: 0; font-size: 10px; line-height: 1.5; }
+#contact h2 {
+  grid-area: title;
+  min-width: 0;
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(56px, 4.5vw, 68px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -.04em;
+  overflow-wrap: anywhere;
+}
+#contact h2 > span, #contact h2 > em { display: block; }
+#contact h2 em {
+  margin: 2px 0 0;
+  color: inherit;
+  font: 400 clamp(48px, 4vw, 60px)/1.12 var(--script);
+  letter-spacing: -.035em;
+}
+#contact > .contact-statements {
+  grid-area: statements;
+  display: grid;
+  gap: 40px;
+  margin: 0;
+  min-width: 0;
+  max-width: 760px;
+}
+#contact .contact-statements h3 {
+  margin: 0 0 18px;
+  font-size: clamp(22px, 1.7vw, 24px);
+  font-weight: 700;
+  line-height: 1.45;
+}
+#contact .contact-statements p {
+  margin: 0;
+  font-size: clamp(18px, 1.4vw, 20px);
+  font-weight: 400;
+  line-height: 1.95;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+#contact > .contact-details {
+  grid-area: details;
+  display: block;
+  min-width: 0;
+  margin: 0;
+}
+#contact .contact-details > p { margin: 0; font-size: 18px; line-height: 1.75; }
+#contact .contact-methods { margin: 20px 0 0; }
+#contact .contact-methods > div { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 10px; margin-top: 12px; font-size: 17px; line-height: 1.7; }
+#contact .contact-methods dt { min-width: 3.5em; }
+#contact .contact-methods dd { margin: 0; min-width: 0; }
+#contact .contact-methods a { font: inherit; color: inherit; border-bottom: 1px solid currentColor; padding-bottom: 3px; overflow-wrap: anywhere; }
+#contact a:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+@media (max-width: 760px) {
+  #contact {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "label" "title" "statements" "details";
+    grid-template-rows: auto;
+    row-gap: 24px;
+  }
+  #contact h2 { font-size: clamp(34px, 5.8vw, 42px); }
+  #contact h2 em { font-size: clamp(36px, 6.1vw, 44px); }
+  #contact > .contact-statements { gap: 30px; }
+  #contact .contact-statements h3 { margin-bottom: 14px; font-size: clamp(20px, 3vw, 22px); }
+  #contact .contact-statements p { font-size: clamp(16px, 2.5vw, 18px); line-height: 1.85; }
+  #contact .contact-details > p, #contact .contact-methods > div { font-size: 16px; }
+}
+@media (max-width: 660px) { #contact { padding-inline: 7%; } }
